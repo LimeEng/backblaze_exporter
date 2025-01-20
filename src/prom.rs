@@ -79,13 +79,13 @@ impl DiskMetrics {
     }
 
     fn update(&self, disks: &[Disk]) {
+        fn escape_label_value(value: &str) -> String {
+            value.replace('\\', r"\\")
+        }
+
         for disk in disks {
-            // : and / have special meaning in Prometheus, so these need to be encoded
             let labels = DiskLabels {
-                mountpoint: url::form_urlencoded::byte_serialize(
-                    disk.mountpoint.clone().as_bytes(),
-                )
-                .collect(),
+                mountpoint: escape_label_value(&disk.mountpoint),
             };
 
             self.total_bytes
