@@ -1,6 +1,6 @@
 use crate::Disk;
 use prometheus_client::{
-    encoding::{text, EncodeLabelSet},
+    encoding::{EncodeLabelSet, text},
     metrics::{family::Family, gauge::Gauge},
     registry::Registry,
 };

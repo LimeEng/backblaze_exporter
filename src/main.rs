@@ -1,8 +1,8 @@
 use axum::{
+    Json, Router,
     http::StatusCode,
     response::{IntoResponse, Response},
     routing::get,
-    Json, Router,
 };
 use backblaze_exporter::{
     backblaze,
